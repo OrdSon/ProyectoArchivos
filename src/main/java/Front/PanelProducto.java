@@ -4,17 +4,27 @@
  */
 package Front;
 
+import DAO.ProductoDAO;
+import DataClasses.Producto;
+
 /**
  *
  * @author OrdSon
  */
 public class PanelProducto extends javax.swing.JPanel {
 
+    ProductoDAO productoDAO = new ProductoDAO();
+
     /**
      * Creates new form PanelProducto
      */
     public PanelProducto() {
         initComponents();
+        fillTable();
+    }
+
+    private void fillTable() {
+        tablaProductos.setModel(productoDAO.getTableModel(productoDAO.selectAll()));
     }
 
     /**
@@ -29,10 +39,10 @@ public class PanelProducto extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        idTxt = new javax.swing.JTextField();
+        nombreTxt = new javax.swing.JTextField();
+        precioTxt = new javax.swing.JTextField();
+        marcaTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -41,7 +51,7 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaProductos = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(600, 400));
         setLayout(new java.awt.BorderLayout());
@@ -51,20 +61,21 @@ public class PanelProducto extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jTextField1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jTextField1.setText("ID");
+        idTxt.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        idTxt.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
 
-        jTextField2.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jTextField2.setText("NOMBRE");
+        nombreTxt.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        nombreTxt.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
 
-        jTextField3.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jTextField3.setText("PRECIO");
+        precioTxt.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        precioTxt.setToolTipText("");
+        precioTxt.setBorder(javax.swing.BorderFactory.createTitledBorder("PRECIO"));
 
-        jTextField4.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jTextField4.setText("MARCA");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        marcaTxt.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        marcaTxt.setBorder(javax.swing.BorderFactory.createTitledBorder("MARCA"));
+        marcaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                marcaTxtActionPerformed(evt);
             }
         });
 
@@ -73,6 +84,11 @@ public class PanelProducto extends javax.swing.JPanel {
 
         jButton2.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jButton2.setText("CREAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jButton3.setText("MODIFICAR");
@@ -87,12 +103,12 @@ public class PanelProducto extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(nombreTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(idTxt))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                    .addComponent(precioTxt)
+                    .addComponent(marcaTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -110,17 +126,17 @@ public class PanelProducto extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precioTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marcaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
                     .addComponent(jButton4))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel4, java.awt.BorderLayout.CENTER);
@@ -139,7 +155,7 @@ public class PanelProducto extends javax.swing.JPanel {
 
         jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -150,7 +166,7 @@ public class PanelProducto extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaProductos);
 
         jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -159,12 +175,33 @@ public class PanelProducto extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void marcaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_marcaTxtActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        productoDAO.insert(recopilarProducto());
+        fillTable();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    private Producto recopilarProducto() {
+        try {
+            int id = 0;
+            if (!idTxt.getText().isBlank()) {
+                id = Integer.parseInt(idTxt.getText());
+            }
+            double precio = Double.parseDouble(precioTxt.getText());
+            String nombre = nombreTxt.getText();
+            String marca = marcaTxt.getText();
+            Producto nuevo = new Producto(id, nombre, marca, precio);
+            return nuevo;
+        } catch (NumberFormatException e) {
+            System.err.println(e.getMessage());
+            return null;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField idTxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -176,10 +213,9 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField marcaTxt;
+    private javax.swing.JTextField nombreTxt;
+    private javax.swing.JTextField precioTxt;
+    private javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }

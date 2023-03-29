@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class SucursalDAO extends DAO {
 
     private final String insert = "INSERT INTO sucursal (nombre, direccion) VALUES (?,?)";
-    private final String selectAll = "SELECT * FROM sucursal";
+    private final String selectAll = "SELECT * FROM sucursal WHERE nombre != 'Bodega'";
     private final String alter = "UPDATE sucursal SET nombre = ?, direccion = ? WHERE id = ?";
     private final String delete = "DELETE FROM sucursal WHERE id = ?";
     private final String searchByNit = "SELECT * FROM cliente WHERE id = ?";
@@ -33,6 +33,10 @@ public class SucursalDAO extends DAO {
 
     public void insert(Sucursal sucursal) {
         try ( PreparedStatement ps = conexion.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS)) {
+            if (sucursal.nombre().equalsIgnoreCase("bodega")) {
+                JOptionPane.showMessageDialog(null, "No ingresar una segunda bodega");
+                return;
+            }
             ps.setString(1, sucursal.nombre());
             ps.setString(2, sucursal.direccion());
             ps.executeUpdate();

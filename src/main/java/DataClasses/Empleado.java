@@ -9,6 +9,6 @@ package DataClasses;
  * @param ID, NOMBRE, DPI, FECHA, SUCURSAL, TIPO
  */
 import java.util.Date;
-public record Empleado (int id, String nombre, long dpi, Date fecha, int sucursal, String tipo){
+public record Empleado (int id, String nombre, long dpi, Date fecha, int sucursal, String tipo, Date nacimiento){
     
 }

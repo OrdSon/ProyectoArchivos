@@ -6,7 +6,6 @@ package Front;
 
 import DataClasses.Cliente;
 import DAO.ClienteDAO;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
