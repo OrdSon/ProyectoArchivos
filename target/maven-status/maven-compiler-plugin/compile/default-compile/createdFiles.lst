@@ -10,6 +10,7 @@ Front\Login$2.class
 DataClasses\Producto.class
 Front\PanelBodega$4.class
 Front\PanelProducto$1.class
+Front\PanelVendedor$12.class
 Front\PanelProducto.class
 Front\FrameInventario.class
 Front\PanelCliente$6.class
@@ -21,6 +22,7 @@ Front\PanelAdmin$1.class
 Front\FrameBodega.class
 Front\PanelVendedor$3.class
 DAO\ProductoDAO.class
+DataClasses\Venta.class
 DataClasses\ProductoVenta.class
 Front\PanelVendedor.class
 Front\PanelSucursal.class
@@ -28,14 +30,17 @@ Front\PanelAdmin.class
 Front\PanelEmpleado$1.class
 Front\PanelVendedor$6.class
 DAO\ClienteDAO.class
+DAO\VentaDAO.class
 Front\PanelSolicitud.class
 Front\PanelEmpleado$2.class
 Front\PanelVendedor$2.class
 Front\PanelBodega.class
 Front\PanelBodega$3.class
+Front\PanelVendedor$9.class
 DataClasses\SucursalComboItem.class
 Front\PanelCliente.class
 Front\PanelProducto$2.class
+Front\PanelVendedor$11.class
 Front\PanelCliente$4.class
 Front\PanelVendedor$5.class
 Front\PanelEmpleado.class
@@ -47,6 +52,7 @@ Front\PanelSucursal$3.class
 Front\FrameInventario$1.class
 DAO\EmpleadoDAO.class
 Front\PanelVendedor$1.class
+Front\PanelVendedor$10.class
 Front\PanelEmpleado$3.class
 Front\PanelBodega$2.class
 DataClasses\Empleado.class
@@ -55,6 +61,7 @@ DataClasses\Sucursal.class
 Front\PanelVendedor$8.class
 DAO\SucursalDAO.class
 Front\PanelSucursal$4.class
+Front\PanelVendedor$13.class
 Front\PanelVendedor$4.class
 Main\Postgres.class
 DAO\InventarioDAO.class

@@ -21,6 +21,7 @@ public class ClienteDAO extends DAO {
 
     private final String insert = "INSERT INTO cliente VALUES (?,?)";
     private final String selectAll = "SELECT * FROM cliente";
+    private final String select= "SELECT * FROM cliente WHERE nit = ?";
     private final String alter = "UPDATE cliente SET nombre = ? WHERE nit = ?";
     private final String searchByNit = "SELECT * FROM cliente WHERE nit LIKE ?";
     private final String searchByName = "SELECT * FROM cliente WHERE nombre LIKE ?";
@@ -57,6 +58,23 @@ public class ClienteDAO extends DAO {
         }
     }
 
+    public Cliente select(String nit) {
+        try (PreparedStatement ps = conexion.prepareStatement(select)) {
+            ps.setString(1, nit);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String nitResultado = rs.getString("nit");
+                String nombre = rs.getString("nombre");
+                Cliente nuevo = new Cliente(nitResultado, nombre);
+                return nuevo;
+            }
+            return null;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+
     public void update(Cliente cliente) {
         try ( PreparedStatement ps = conexion.prepareStatement(alter)) {
             ps.setString(1, cliente.nombre());
@@ -85,9 +103,9 @@ public class ClienteDAO extends DAO {
             return null;
         }
         LinkedList<Cliente> clientes = new LinkedList<>();
-        if (cliente.nit().isBlank()&& !cliente.nombre().isBlank()) {
+        if (cliente.nit().isBlank() && !cliente.nombre().isBlank()) {
             try ( PreparedStatement st = conexion.prepareStatement(searchByName);) {
-                st.setString(1, "%"+cliente.nombre()+"%");
+                st.setString(1, "%" + cliente.nombre() + "%");
                 ResultSet rs = st.executeQuery();
                 while (rs.next()) {
                     String nit = rs.getString("nit");
@@ -100,9 +118,9 @@ public class ClienteDAO extends DAO {
             } catch (SQLException e) {
                 System.out.println(e.toString());
             }
-        } else if (cliente.nombre().isBlank()&& !cliente.nit().isBlank()) {
+        } else if (cliente.nombre().isBlank() && !cliente.nit().isBlank()) {
             try ( PreparedStatement st = conexion.prepareStatement(searchByNit);) {
-                st.setString(1, "%"+cliente.nit()+"%");
+                st.setString(1, "%" + cliente.nit() + "%");
                 ResultSet rs = st.executeQuery();
                 while (rs.next()) {
                     String nit = rs.getString("nit");
@@ -117,8 +135,8 @@ public class ClienteDAO extends DAO {
             }
         } else if (!cliente.nombre().isBlank() && !cliente.nit().isBlank()) {
             try ( PreparedStatement st = conexion.prepareStatement(searchByNitAndName);) {
-                st.setString(1, "%"+cliente.nit()+"%");
-                st.setString(2, "%"+cliente.nombre()+"%");
+                st.setString(1, "%" + cliente.nit() + "%");
+                st.setString(2, "%" + cliente.nombre() + "%");
                 ResultSet rs = st.executeQuery();
                 while (rs.next()) {
                     String nit = rs.getString("nit");

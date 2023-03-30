@@ -139,7 +139,7 @@ public class Login extends javax.swing.JFrame {
                     panelAdmin.setVisible(true);
                 }
                 case "Ventas" ->{
-                    PanelVendedor ventas = new PanelVendedor();
+                    PanelVendedor ventas = new PanelVendedor(logueado);
                     ventas.setVisible(true);
                 }
                 case "Bodega" ->{

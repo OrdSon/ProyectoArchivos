@@ -1,6 +1,7 @@
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\FrameBodega.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Main\Postgres.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelVendedor.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\Venta.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelProducto.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\DateChooser.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DAO\DAO.java
@@ -9,6 +10,7 @@ C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelSol
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\Login.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DAO\EmpleadoDAO.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelBodega.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DAO\VentaDAO.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DAO\ProductoDAO.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelCliente.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DAO\InventarioDAO.java
