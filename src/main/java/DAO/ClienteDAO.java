@@ -26,6 +26,8 @@ public class ClienteDAO extends DAO {
     private final String searchByNit = "SELECT * FROM cliente WHERE nit LIKE ?";
     private final String searchByName = "SELECT * FROM cliente WHERE nombre LIKE ?";
     private final String searchByNitAndName = "SELECT * FROM cliente WHERE nit LIKE ? AND nombre LIKE ?";
+    private final String selectLastVenta = "SELECT subtotal FROM venta WHERE id_cliente = ? AND id_cliente != 'C/F' ORDER BY id DESC LIMIT 1;";
+    private double monto = 0;
 
     public ClienteDAO() {
     }
@@ -66,6 +68,7 @@ public class ClienteDAO extends DAO {
                 String nitResultado = rs.getString("nit");
                 String nombre = rs.getString("nombre");
                 Cliente nuevo = new Cliente(nitResultado, nombre);
+                selectLastVenta(nitResultado);
                 return nuevo;
             }
             return null;
@@ -74,7 +77,25 @@ public class ClienteDAO extends DAO {
             return null;
         }
     }
+    public void selectLastVenta(String nit) {
+        try (PreparedStatement ps = conexion.prepareStatement(selectLastVenta)) {
+            ps.setString(1, nit);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                this.monto =rs.getDouble("subtotal");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
 
+    public double getMonto(){
+        return  this.monto;
+    }
+    
+    public void setMonto(double monto){
+        this.monto = monto;
+    }
     public void update(Cliente cliente) {
         try ( PreparedStatement ps = conexion.prepareStatement(alter)) {
             ps.setString(1, cliente.nombre());

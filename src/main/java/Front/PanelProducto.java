@@ -26,7 +26,12 @@ public class PanelProducto extends javax.swing.JPanel implements updater{
     private void fillTable() {
         tablaProductos.setModel(productoDAO.getTableModel(productoDAO.selectAll()));
     }
-
+    public void removeRights(boolean activo){
+        crearBtn.setEnabled(activo);
+        crearBtn.setVisible(activo);
+        eliminarBtn.setEnabled(activo);
+        eliminarBtn.setVisible(activo);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,9 +49,9 @@ public class PanelProducto extends javax.swing.JPanel implements updater{
         precioTxt = new javax.swing.JTextField();
         marcaTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        crearBtn = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        eliminarBtn = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -81,20 +86,30 @@ public class PanelProducto extends javax.swing.JPanel implements updater{
 
         jButton1.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jButton1.setText("BUSCAR");
-
-        jButton2.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jButton2.setText("CREAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        crearBtn.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        crearBtn.setText("CREAR");
+        crearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearBtnActionPerformed(evt);
             }
         });
 
         jButton3.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jButton3.setText("MODIFICAR");
 
-        jButton4.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
-        jButton4.setText("ELIMINAR");
+        eliminarBtn.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
+        eliminarBtn.setText("ELIMINAR");
+        eliminarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -116,9 +131,9 @@ public class PanelProducto extends javax.swing.JPanel implements updater{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(crearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(eliminarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -134,8 +149,8 @@ public class PanelProducto extends javax.swing.JPanel implements updater{
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(marcaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
+                    .addComponent(crearBtn)
+                    .addComponent(eliminarBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -179,10 +194,18 @@ public class PanelProducto extends javax.swing.JPanel implements updater{
         // TODO add your handling code here:
     }//GEN-LAST:event_marcaTxtActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void crearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearBtnActionPerformed
         productoDAO.insert(recopilarProducto());
         fillTable();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_crearBtnActionPerformed
+
+    private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     private Producto recopilarProducto() {
         try {
             int id = 0;
@@ -201,11 +224,11 @@ public class PanelProducto extends javax.swing.JPanel implements updater{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton crearBtn;
+    private javax.swing.JButton eliminarBtn;
     private javax.swing.JTextField idTxt;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

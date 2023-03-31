@@ -76,37 +76,39 @@ public class PanelVendedor extends javax.swing.JFrame {
 
     private void calcTotal() {
         try {
-            double sum = 0;
+            double suma = 0;
             for (int i = 0; i < tablaVenta.getRowCount(); i++) {
-                sum = sum + Double.parseDouble(tablaVenta.getValueAt(i, 3).toString());
+                suma = suma + Double.parseDouble(tablaVenta.getValueAt(i, 3).toString());
             }
-            subTotalTxt.setText("Q. " + String.format("%,.2f", sum));
-            subtotal = sum;
+            getDescuento();
+            subTotalTxt.setText("Q. " + String.format("%,.2f", suma));
+            subtotal = suma;
+            total = (suma-(suma*descuento));
+            totalLbl.setText("Q. " + String.format("%,.2f", total));
+        } catch (NumberFormatException e) {
+        }
+    }
+    
+    private void getDescuento(){
+        try {
+            double sum = clienteDAO.getMonto();
+            
             if (sum >= 10000) {
-                descuento = 10;
-                sum = (sum - (sum * 0.1));
-                total = sum;
+                descuento = 0.1;
                 descuentoLbl.setText("10%");
             } else if (sum >= 5000) {
-                descuento = 5;
-                sum = (sum - (sum * 0.05));
-                total = sum;
-
+                descuento = 0.05;
                 descuentoLbl.setText("5%");
             } else if (sum >= 1000) {
-                descuento = 2;
-                sum = (sum - (sum * 0.02));
-                total = sum;
-
+                descuento = 0.02;
                 descuentoLbl.setText("2%");
             } else {
                 descuento = 0;
                 total = sum;
-
                 descuentoLbl.setText("$$$");
             }
-            totalLbl.setText("Q. " + String.format("%,.2f", sum));
-        } catch (NumberFormatException e) {
+            
+        } catch (Exception e) {
         }
     }
 
@@ -117,7 +119,7 @@ public class PanelVendedor extends javax.swing.JFrame {
             String nit = nitTxt.getText();
             int idSucursal = empleado.sucursal();
             int idEmpleado = empleado.id();
-            Venta nueva = new Venta(0, nit, idSucursal, idEmpleado, new Date(WIDTH), descuento, subtotal, total);
+            Venta nueva = new Venta(0, nit, idSucursal, idEmpleado, new Date(WIDTH), descuento*100, subtotal, total);
             return nueva;
         } catch (Exception e) {
             return null;
@@ -179,7 +181,8 @@ public class PanelVendedor extends javax.swing.JFrame {
         tablaVenta = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(600, 400));
 
@@ -464,11 +467,26 @@ public class PanelVendedor extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        jMenu1.setText("Administrar");
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jMenuItem1.setText("Clientes");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem2.setText("Limpiar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -540,6 +558,7 @@ public class PanelVendedor extends javax.swing.JFrame {
         try {
             String nit = nitTxt.getText();
             Cliente buscado = clienteDAO.select(nit);
+            calcTotal();
             if (buscado == null) {
                 JOptionPane.showMessageDialog(null, "Cliente no encontrado");
             }
@@ -578,6 +597,25 @@ public class PanelVendedor extends javax.swing.JFrame {
         }
         ventaDAO.insert(recopilarVenta(), listaCompra);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        PanelClientesVendedor pcv = new PanelClientesVendedor();
+        pcv.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        listaCompra.clear();
+        clienteDAO.setMonto(0);
+        descuento = 0;
+        total = 0;
+        subtotal = 0;
+        calcTotal();
+        nitTxt.setText("");
+        nombreClienteTxt.setText("???");
+        totalLbl.setText("$$$");
+        subTotalTxt.setText("$$$");
+        fillTable();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     public void checkEmptyText() {
         for (JTextField textField : textFields) {
@@ -638,8 +676,9 @@ public class PanelVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

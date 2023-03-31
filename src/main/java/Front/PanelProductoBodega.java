@@ -4,28 +4,22 @@
  */
 package Front;
 
-import DataClasses.Empleado;
-
 /**
  *
  * @author OrdSon
  */
-public class FrameBodega extends javax.swing.JFrame {
+public class PanelProductoBodega extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrameBodega
+     * Creates new form PanelProductoBodega
      */
-    public FrameBodega() {
+    public PanelProductoBodega() {
         initComponents();
-        panelBase.add(new PanelBodega());
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    }
-
-    public FrameBodega(Empleado logueado) {
-        initComponents();
-        panelBase.add(new PanelBodega(logueado));
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
+        PanelProducto panelProducto = new PanelProducto();
+        panelProducto.removeRights(false);
+        panelProducto.setVisible(true);
+        jPanel1.add(panelProducto);
     }
 
     /**
@@ -37,45 +31,18 @@ public class FrameBodega extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBase = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(625, 625));
         setPreferredSize(new java.awt.Dimension(625, 625));
         setResizable(false);
 
-        panelBase.setBackground(new java.awt.Color(255, 255, 255));
-        panelBase.setToolTipText("");
-        panelBase.setMinimumSize(new java.awt.Dimension(625, 500));
-        panelBase.setPreferredSize(new java.awt.Dimension(625, 500));
-        panelBase.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(panelBase, java.awt.BorderLayout.CENTER);
-
-        jMenu1.setText("Administrar");
-
-        jMenuItem1.setText("Productos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
+        jPanel1.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        PanelProductoBodega ppb = new PanelProductoBodega();
-        ppb.setVisible(true);
-       
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,28 +61,25 @@ public class FrameBodega extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameBodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelProductoBodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameBodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelProductoBodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameBodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelProductoBodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameBodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelProductoBodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameBodega().setVisible(true);
+                new PanelProductoBodega().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel panelBase;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

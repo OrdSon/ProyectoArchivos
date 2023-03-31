@@ -73,9 +73,9 @@
                                   <Component id="jButton3" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="crearBtn" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButton4" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="eliminarBtn" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="17" max="32767" attributes="0"/>
@@ -96,8 +96,8 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="nombreTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="marcaTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="crearBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="eliminarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -164,8 +164,11 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="BUSCAR"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="crearBtn">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Source Sans Pro" size="14" style="0"/>
@@ -173,7 +176,7 @@
                     <Property name="text" type="java.lang.String" value="CREAR"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearBtnActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton3">
@@ -184,13 +187,16 @@
                     <Property name="text" type="java.lang.String" value="MODIFICAR"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton4">
+                <Component class="javax.swing.JButton" name="eliminarBtn">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Source Sans Pro" size="14" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="ELIMINAR"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarBtnActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

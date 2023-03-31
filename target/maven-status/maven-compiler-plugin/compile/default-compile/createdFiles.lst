@@ -4,6 +4,7 @@ Front\PanelSucursal$1.class
 Front\PanelCliente$2.class
 Front\DetalleVentaFrame$2.class
 Front\PanelVentas.class
+Front\PanelProducto$4.class
 Front\PanelVendedor$7.class
 Front\PanelVentas$2.class
 Front\PanelEmpleado$4.class
@@ -11,6 +12,7 @@ DataClasses\EmpleadoGanancia.class
 Front\RoundJtextField.class
 Front\Login$2.class
 DataClasses\Producto.class
+Front\FrameBodega$2.class
 Front\PanelBodega$4.class
 Front\DetalleVentaFrame.class
 Front\PanelProducto$1.class
@@ -20,6 +22,7 @@ Front\FrameInventario.class
 Front\PanelCliente$6.class
 Front\PanelBodega$1.class
 DAO\ReportesDAO.class
+Front\PanelProducto$3.class
 Front\PanelCliente$3.class
 DataClasses\Inventario.class
 Front\DetalleVentaFrame$1.class
@@ -27,6 +30,8 @@ Front\PanelSucursal$2.class
 Front\PanelAdmin$1.class
 Front\FrameBodega.class
 Front\PanelVendedor$3.class
+Front\PanelClientesVendedor$1.class
+Front\PanelVendedor$15.class
 Front\PanelReportes.class
 DAO\ProductoDAO.class
 DataClasses\Venta.class
@@ -42,17 +47,20 @@ DAO\VentaDAO.class
 DataClasses\ProductoGanancia.class
 Front\PanelVentas$1.class
 Front\PanelSolicitud.class
+Front\PanelProductoBodega.class
 Front\PanelEmpleado$2.class
 Front\PanelVendedor$2.class
 Front\PanelBodega.class
 Front\PanelBodega$3.class
 Front\PanelVendedor$9.class
 DataClasses\SucursalComboItem.class
+Front\PanelVendedor$14.class
 Front\PanelCliente.class
 Front\updater.class
 Front\PanelProducto$2.class
 Front\PanelVendedor$11.class
 Front\PanelCliente$4.class
+Front\PanelClientesVendedor.class
 Front\PanelVendedor$5.class
 Front\PanelEmpleado.class
 Front\RoundedBorder.class
@@ -60,7 +68,6 @@ Front\Login$1.class
 Main\Conexion.class
 Front\PanelCliente$1.class
 DataClasses\ElementoLista.class
-.netbeans_automatic_build
 Front\PanelSucursal$3.class
 DataClasses\ClienteGanancia.class
 Front\FrameInventario$1.class
@@ -72,6 +79,7 @@ Utilities\TableModeler.class
 Front\PanelBodega$2.class
 DataClasses\Empleado.class
 Front\DateChooser.class
+Front\PanelProductoBodega$1.class
 DataClasses\Sucursal.class
 Front\PanelVendedor$8.class
 DAO\SucursalDAO.class
