@@ -27,6 +27,8 @@ public class PanelAdmin extends javax.swing.JFrame {
      */
     public PanelAdmin() {
         initComponents();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
@@ -148,6 +150,7 @@ public class PanelAdmin extends javax.swing.JFrame {
         pp.update();
         pc.update();
         pv.update();
+        pr.update();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

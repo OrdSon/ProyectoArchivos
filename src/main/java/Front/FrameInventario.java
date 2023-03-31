@@ -15,6 +15,8 @@ public class FrameInventario extends javax.swing.JFrame {
      */
     public FrameInventario() {
         initComponents();
+                setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
     }
 
     /**

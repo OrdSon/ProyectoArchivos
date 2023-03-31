@@ -18,10 +18,13 @@ public class FrameBodega extends javax.swing.JFrame {
     public FrameBodega() {
         initComponents();
         panelBase.add(new PanelBodega());
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
  public FrameBodega(Empleado logueado) {
         initComponents();
         panelBase.add(new PanelBodega(logueado));
+                setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
     }
     /**
      * This method is called from within the constructor to initialize the form.

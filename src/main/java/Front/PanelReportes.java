@@ -11,7 +11,7 @@ import Utilities.TableModeler;
  *
  * @author OrdSon
  */
-public class PanelReportes extends javax.swing.JPanel {
+public class PanelReportes extends javax.swing.JPanel implements updater{
 
     ReportesDAO reportesDAO = new ReportesDAO();
     TableModeler tm = new TableModeler();
@@ -284,4 +284,9 @@ public class PanelReportes extends javax.swing.JPanel {
     private javax.swing.JTable top5GananciasTable;
     private javax.swing.JTable top5VentasTable;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update() {
+        fillTables();
+    }
 }
