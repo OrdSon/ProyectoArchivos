@@ -11,12 +11,13 @@ import DataClasses.Sucursal;
 import java.util.Date;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author OrdSons
  */
-public class PanelEmpleado extends javax.swing.JPanel implements updater{
+public class PanelEmpleado extends javax.swing.JPanel implements updater {
 
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     SucursalDAO sucursalDAO = new SucursalDAO();
@@ -139,6 +140,11 @@ public class PanelEmpleado extends javax.swing.JPanel implements updater{
 
         jButton4.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         jButton4.setText("MODIFICAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         comboSucursal.setFont(new java.awt.Font("Source Sans Pro", 0, 14)); // NOI18N
         comboSucursal.setBorder(javax.swing.BorderFactory.createTitledBorder("Sucursal"));
@@ -195,17 +201,15 @@ public class PanelEmpleado extends javax.swing.JPanel implements updater{
                     .addComponent(nombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(dpiTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(comboSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0))
+                            .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton4)
                             .addComponent(jButton1)
@@ -214,7 +218,7 @@ public class PanelEmpleado extends javax.swing.JPanel implements updater{
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton3)
                             .addComponent(jButton2))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
 
         jPanel2.add(jPanel4, java.awt.BorderLayout.CENTER);
@@ -259,13 +263,21 @@ public class PanelEmpleado extends javax.swing.JPanel implements updater{
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void getRowData() {
+        DefaultTableModel model = (DefaultTableModel) tablaEmpleados.getModel();
+        int selectedRowIndex = tablaEmpleados.getSelectedRow();
+        idTxt.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        nombreTxt.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        dpiTxt.setText(model.getValueAt(selectedRowIndex, 3).toString());
+    }
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         insertarEmpleado();
         fillTable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void tablaEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEmpleadosMouseClicked
-        // TODO add your handling code here:
+        getRowData();
     }//GEN-LAST:event_tablaEmpleadosMouseClicked
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -275,6 +287,20 @@ public class PanelEmpleado extends javax.swing.JPanel implements updater{
     private void comboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboTipoActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            if (!idTxt.getText().isBlank() && !nombreTxt.getText().isBlank()) {
+                String[] splitParts = comboSucursal.getSelectedItem().toString().split(" ");
+                int sucursal = Integer.parseInt(splitParts[0]);
+                Empleado nuevo = new Empleado(Integer.parseInt(idTxt.getText()), nombreTxt.getText(),
+                        0, new Date(), sucursal, comboTipo.getSelectedItem().toString(), new Date());
+                empleadoDAO.update(nuevo);
+                fillTable();
+            }
+        } catch (NumberFormatException e) {
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

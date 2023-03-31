@@ -77,8 +77,8 @@ public class PanelAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(700, 400));
-        setPreferredSize(new java.awt.Dimension(700, 400));
+        setMinimumSize(new java.awt.Dimension(700, 800));
+        setPreferredSize(new java.awt.Dimension(700, 800));
         setResizable(false);
 
         jPanel1.setLayout(new java.awt.BorderLayout());
