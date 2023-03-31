@@ -8,15 +8,15 @@ import DAO.EmpleadoDAO;
 import DAO.SucursalDAO;
 import DataClasses.Empleado;
 import DataClasses.Sucursal;
-import DataClasses.SucursalComboItem;
 import java.util.Date;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author OrdSon
+ * @author OrdSons
  */
-public class PanelEmpleado extends javax.swing.JPanel {
+public class PanelEmpleado extends javax.swing.JPanel implements updater{
 
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     SucursalDAO sucursalDAO = new SucursalDAO();
@@ -35,22 +35,30 @@ public class PanelEmpleado extends javax.swing.JPanel {
     }
 
     private void fillTipos() {
+        comboSucursal.removeAllItems();
         LinkedList<Sucursal> sucursales = sucursalDAO.selectAll();
         for (Sucursal sucursal : sucursales) {
-            comboSucursal.addItem(sucursal.id()+" "+sucursal.nombre());
+            comboSucursal.addItem(sucursal.id() + " " + sucursal.nombre());
         }
 
     }
 
     private void insertarEmpleado() {
+        int id = 0;
         try {
-            int id = Integer.parseInt(idTxt.getText());
+            if (!idTxt.getText().isBlank()) {
+                id = Integer.parseInt(idTxt.getText());
+            }
             long dpi = Long.parseLong(dpiTxt.getText());
             String nombre = nombreTxt.getText();
             String[] splitParts = comboSucursal.getSelectedItem().toString().split(" ");
             int sucursal = Integer.parseInt(splitParts[0]);
             String tipo = comboTipo.getSelectedItem().toString();
             Date nacimiento = dateChooser.getDate();
+            if (nacimiento == null) {
+                JOptionPane.showMessageDialog(null, "Seleccione una fecha");
+                return;
+            }
             Empleado nuevo = new Empleado(id, nombre, dpi, new Date(), sucursal, tipo, nacimiento);
 
             empleadoDAO.insert(nuevo);
@@ -290,4 +298,10 @@ public class PanelEmpleado extends javax.swing.JPanel {
     private javax.swing.JTextField nombreTxt;
     private javax.swing.JTable tablaEmpleados;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update() {
+        fillTable();
+        fillTipos();
+    }
 }

@@ -31,7 +31,8 @@ public class InventarioDAO extends DAO {
                                      i.id_sucursal as id_sucursal, s.nombre as sucursal, i.cantidad FROM 
                                      inventario AS i INNER JOIN producto AS p ON p.id = i.id_producto 
                                      INNER JOIN sucursal AS s ON s.id = i.id_sucursal  WHERE i.id_sucursal = ?""";
-
+    
+    private final String selectCantidad = " SELECT cantidad FROM inventario WHERE id_sucursal = ? and id_producto = ?;";
     private final String alter = "UPDATE inventario SET cantidad = ? WHERE id_producto = ? AND id_sucursal = ?";
 
     public InventarioDAO() {
@@ -111,7 +112,18 @@ public class InventarioDAO extends DAO {
             return null;
         }
     }
-
+    public int selectCantidad(int idSucursal, int idProducto){
+        try (PreparedStatement ps = conexion.prepareStatement(selectCantidad)){
+            ps.setInt(1, idSucursal);
+            ps.setInt(2, idProducto);
+            ResultSet rs = ps.executeQuery();
+            int cantidad = rs.getInt("cantidad");
+            return cantidad;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            return -1;
+        }
+    }
     public void update(Inventario inventario, String mensaje) {
         try ( PreparedStatement ps = conexion.prepareStatement(alter)) {
             ps.setInt(1, inventario.Cantidad());

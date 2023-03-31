@@ -11,7 +11,7 @@ import DataClasses.Producto;
  *
  * @author OrdSon
  */
-public class PanelProducto extends javax.swing.JPanel {
+public class PanelProducto extends javax.swing.JPanel implements updater{
 
     ProductoDAO productoDAO = new ProductoDAO();
 
@@ -218,4 +218,9 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JTextField precioTxt;
     private javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update() {
+        fillTable();
+    }
 }

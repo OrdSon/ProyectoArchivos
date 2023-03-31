@@ -60,7 +60,7 @@ public class EmpleadoDAO extends DAO {
                 String tipo = rs.getString("tipo");
                 Date fecha = rs.getDate("fecha_contratacion");
                 Empleado nuevo = new Empleado(id, nombre, dpi, fecha, sucursal, tipo, nacimiento);
-                System.out.println(nuevo.toString());
+                //System.out.println(nuevo.toString());
                 return nuevo;
             }
         } catch (SQLException e) {
@@ -83,7 +83,7 @@ public class EmpleadoDAO extends DAO {
                 Date fecha = rs.getDate("fecha_contratacion");
                 Empleado nuevo = new Empleado(id, nombre, dpi, fecha, sucursal, tipo, nacimiento);
                 empleados.add(nuevo);
-                System.out.println(nuevo.toString());
+                //System.out.println(nuevo.toString());
             }
             return empleados;
         } catch (SQLException e) {

@@ -49,7 +49,7 @@ public class ProductoDAO extends DAO{
                 double precio = rs.getDouble("precio");
                 Producto nuevo = new Producto(id, nombre, marca, precio);
                 productos.add(nuevo);
-                System.out.println(nuevo.toString());
+                //System.out.println(nuevo.toString());
             }
             return productos;
         } catch (SQLException e) {
@@ -68,7 +68,7 @@ public class ProductoDAO extends DAO{
                 String marca = rs.getString("marca");
                 double precio = rs.getDouble("precio");
                 Producto nuevo = new Producto(id, nombre, marca, precio);
-                System.out.println(nuevo.toString());
+                //System.out.println(nuevo.toString());
                 return nuevo;
             }
         } catch (SQLException e) {

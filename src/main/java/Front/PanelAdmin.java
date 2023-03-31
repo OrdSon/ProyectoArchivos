@@ -15,6 +15,13 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class PanelAdmin extends javax.swing.JFrame {
 
+    PanelSucursal ps = new PanelSucursal();
+    PanelVentas pv = new PanelVentas();
+    PanelEmpleado pe = new PanelEmpleado();
+    PanelProducto pp = new PanelProducto();
+    PanelCliente pc = new PanelCliente();
+    PanelReportes pr = new PanelReportes();
+
     /**
      * Creates new form FrameAdmin
      */
@@ -31,12 +38,14 @@ public class PanelAdmin extends javax.swing.JFrame {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(PanelAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
-        tabSucursales.add(new PanelSucursal());
-        tabVentas.add(new PanelVentas());
-        tabEmpleados.add(new PanelEmpleado());
-        tabProductos.add(new PanelProducto());
-        tabClientes.add(new PanelCliente());
-        this.setSize(700,635);
+
+        tabSucursales.add(ps);
+        tabVentas.add(pv);
+        tabEmpleados.add(pe);
+        tabProductos.add(pp);
+        tabClientes.add(pc);
+        tabReportes.add(pr);
+        this.setSize(700, 635);
         this.setResizable(false);
     }
 
@@ -60,6 +69,9 @@ public class PanelAdmin extends javax.swing.JFrame {
         tabProductos = new javax.swing.JPanel();
         tabClientes = new javax.swing.JPanel();
         tabReportes = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -113,8 +125,30 @@ public class PanelAdmin extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
+        jMenu1.setText("Opciones");
+
+        jMenuItem1.setText("Actualizar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        ps.update();
+        pe.update();
+        pp.update();
+        pc.update();
+        pv.update();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +187,9 @@ public class PanelAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

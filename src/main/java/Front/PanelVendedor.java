@@ -5,6 +5,7 @@
 package Front;
 
 import DAO.ClienteDAO;
+import DAO.InventarioDAO;
 import DAO.ProductoDAO;
 import DAO.VentaDAO;
 import DataClasses.Cliente;
@@ -41,6 +42,7 @@ public class PanelVendedor extends javax.swing.JFrame {
     ProductoDAO productoDAO = new ProductoDAO();
     ClienteDAO clienteDAO = new ClienteDAO();
     VentaDAO ventaDAO = new VentaDAO();
+    InventarioDAO inventarioDAO = new  InventarioDAO();
     Producto actual;
     LinkedList<ProductoVenta> listaCompra = new LinkedList<>();
 
@@ -476,7 +478,7 @@ public class PanelVendedor extends javax.swing.JFrame {
                 actual = productoDAO.select(Integer.parseInt(codigoProductoTxt.getText()));
             }
             for (int i = 0; i < (Integer) cantidadSpinner.getValue(); i++) {
-                listaCompra.add(new ProductoVenta(actual, (Integer) cantidadSpinner.getValue()));
+                listaCompra.add(new ProductoVenta(actual, 1));
             }
             fillTable();
             calcTotal();
@@ -486,6 +488,7 @@ public class PanelVendedor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error en codigo de producto");
         }
     }//GEN-LAST:event_agregarButtonActionPerformed
+    
 
     private void codigoProductoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoProductoTxtActionPerformed
 
@@ -508,7 +511,7 @@ public class PanelVendedor extends javax.swing.JFrame {
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
         try {
             Producto producto = productoDAO.select(Integer.parseInt(codigoProductoTxt.getText()));
-            nombreProductoTxt.setText(producto.nombre());
+            nombreProductoTxt.setText(producto.nombre()+" "+producto.marca());
             this.actual = producto;
         } catch (Exception e) {
         }
@@ -569,7 +572,7 @@ public class PanelVendedor extends javax.swing.JFrame {
         if (darError()) {
             return;
         }
-        ventaDAO.insert(recopilarVenta());
+        ventaDAO.insert(recopilarVenta(),listaCompra);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     public void checkEmptyText() {

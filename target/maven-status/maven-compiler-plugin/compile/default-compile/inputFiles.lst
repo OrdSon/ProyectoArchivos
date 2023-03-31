@@ -1,8 +1,14 @@
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\FrameBodega.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Main\Postgres.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelReportes.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Utilities\TableModeler.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelVendedor.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\ClienteGanancia.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DAO\ReportesDAO.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\Venta.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelProducto.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\ElementoLista.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\EmpleadoGanancia.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\DateChooser.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DAO\DAO.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\Inventario.java
@@ -15,6 +21,7 @@ C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DAO\ProductoDA
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelCliente.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DAO\InventarioDAO.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\SucursalComboItem.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\ProductoGanancia.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\Sucursal.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelEmpleado.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\Empleado.java
@@ -25,8 +32,12 @@ C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\Pr
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelSucursal.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\Cliente.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\ProductoVenta.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\ProductoSucursal.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DAO\SucursalDAO.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelVentas.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\PanelAdmin.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\DataClasses\SucursalGanancia.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\RoundJtextField.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\updater.java
+C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\DetalleVentaFrame.java
 C:\Users\OrdSon\Documents\NetBeansProjects\postgres\src\main\java\Front\FrameInventario.java

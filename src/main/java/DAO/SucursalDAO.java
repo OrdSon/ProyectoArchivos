@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class SucursalDAO extends DAO {
 
     private final String insert = "INSERT INTO sucursal (nombre, direccion) VALUES (?,?)";
-    private final String selectAll = "SELECT * FROM sucursal WHERE nombre != 'Bodega'";
+    private final String selectAll = "SELECT * FROM sucursal";
     private final String alter = "UPDATE sucursal SET nombre = ?, direccion = ? WHERE id = ?";
     private final String delete = "DELETE FROM sucursal WHERE id = ?";
     private final String searchByNit = "SELECT * FROM cliente WHERE id = ?";

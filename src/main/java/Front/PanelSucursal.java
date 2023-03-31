@@ -14,7 +14,7 @@ import org.apache.commons.lang3.math.NumberUtils;
  *
  * @author OrdSon
  */
-public class PanelSucursal extends javax.swing.JPanel {
+public class PanelSucursal extends javax.swing.JPanel implements updater{
 
     SucursalDAO sucursalDAO = new SucursalDAO();
     NumberUtils numberUtils = new NumberUtils();
@@ -243,4 +243,9 @@ public class PanelSucursal extends javax.swing.JPanel {
     private javax.swing.JTextField nombreTxt;
     private javax.swing.JTable tablaSucursales;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update() {
+        filltable();
+    }
 }

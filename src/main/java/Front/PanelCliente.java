@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author OrdSon
  */
-public class PanelCliente extends javax.swing.JPanel {
+public class PanelCliente extends javax.swing.JPanel implements updater{
 
     ClienteDAO clienteManager = new ClienteDAO();
 
@@ -260,4 +260,9 @@ public class PanelCliente extends javax.swing.JPanel {
     private javax.swing.JTextField nombreTxt;
     private javax.swing.JTable tablaClientes;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update() {
+        fillTable();
+    }
 }
